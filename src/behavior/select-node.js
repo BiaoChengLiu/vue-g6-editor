@@ -23,6 +23,7 @@ export default {
         const graph = self.graph;
         const autoPaint = graph.get('autoPaint');
         graph.setAutoPaint(false);
+        // 所有选中的边都改为不选中
         const selectedEdges = graph.findAllByState('edge', 'selected');
         Util.each(selectedEdges, edge => {
             graph.setItemState(edge, 'selected', false);
@@ -50,6 +51,7 @@ export default {
         graph.setAutoPaint(autoPaint);
         graph.paint();
     },
+    // 所有的已选的边、节点都改为不选
     onCanvasClick() {
         const graph = this.graph;
         const autoPaint = graph.get('autoPaint');

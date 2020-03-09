@@ -21,7 +21,6 @@ export default {
         canvas.style.cursor = 'crosshair'
         // this.graph.paint();
     },
-
     onCanvasMousedown(e) {
         const attrs = config.delegateStyle
         const width = 0, height = 0, x = e.x, y = e.y

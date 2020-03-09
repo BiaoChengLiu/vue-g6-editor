@@ -8,7 +8,7 @@
                 <item-panel/>
                 <detail-panel/>
                 <minimap/>
-                <page :height="height" :width="width" :data="data" style="background-color: antiquewhite"/>
+                <page :height="height" :width="width" :data="data"/>
             </div>
         </div>
         <Flow/>

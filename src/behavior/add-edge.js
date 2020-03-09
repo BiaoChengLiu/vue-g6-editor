@@ -63,6 +63,7 @@ export default {
             if (this.edge)
                 this.graph.removeItem(this.edge);
         }
+        // 重新初始化锚点样式
         this.graph.find("node", node => {
             const group = node.get('group')
             const children = group._cfg.children
@@ -82,7 +83,6 @@ export default {
         if (startItem) {
             this.graph.setItemState(startItem, 'hover', false);
         }
-
         this.graph.paint()
         startPoint = null
         startItem = null
@@ -128,11 +128,13 @@ export default {
             }
         }
     },
+    //  拖拽的过程中鼠标滑过其他node
     onMouseover(e) {
         const item = e.item
         if (item && item.getType() === 'node') {
             if (e.target._attrs.isInPointOut && !this.hasTran) {
                 this.hasTran = true
+                // 将对应的锚点变大，方便用户知道我连接的锚点是哪个
                 e.target.transform([
                     ['t', 0, 3],
                     ['s', 1.2, 1.2],
@@ -141,12 +143,14 @@ export default {
             this.graph.paint()
         }
     },
+    // 鼠标离开
     onMouseleave() {
         this.graph.find("node", node => {
             const group = node.get('group')
             const children = group._cfg.children
             children.map(child => {
                 if (child._attrs.isInPointOut) {
+                    // 清除之前设置的锚点变大效果
                     child.resetMatrix()
                 }
             })

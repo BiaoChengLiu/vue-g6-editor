@@ -137,6 +137,7 @@
                     this.command.executeCommand("update", [item]);
                 });
                 eventBus.$on("addItem", item => {
+                    console.log('addItem', item)
                     this.command.executeCommand("add", [item]);
                 });
                 eventBus.$on("nodeselectchange", () => {
@@ -162,12 +163,14 @@
             handleDelete() {
                 if (this.selectedItem.length > 0) {
                     this.command.executeCommand("delete", this.selectedItem);
-                    this.selectedItem = null;
+                    this.selectedItem = [];
                 }
             },
+            // 获取当前布局padding数组
             getFormatPadding() {
                 return Util.formatPadding(this.graph.get("fitViewPadding"));
             },
+            //  获取图形中心点
             getViewCenter() {
                 const padding = this.getFormatPadding();
                 const graph = this.graph;
@@ -205,7 +208,6 @@
                         } else {
                             item.toFront();
                         }
-
                         this.graph.paint();
                     });
                 }
@@ -218,6 +220,7 @@
             },
             handleMuiltSelect() {
                 this.multiSelect = true;
+                // 设置多选模式
                 this.graph.setMode("mulitSelect");
             },
             handleAddGroup() {
@@ -286,7 +289,6 @@
                 // edgeGroup.toFront();
                 // this.graph.paint();
             },
-
             consoleData() {
                 console.log(this.graph.save());
             }

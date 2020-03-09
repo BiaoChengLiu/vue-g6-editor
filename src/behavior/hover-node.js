@@ -32,6 +32,7 @@ export default {
 
                 }
             });
+            // 设置十字架鼠标样式，允许拖拽线
             e.target.attr("cursor", "crosshair");
             this.graph.paint();
         }
@@ -61,9 +62,12 @@ export default {
         graph.paint();
     },
     onMousedown(e) {
+        console.log('鼠标按下', e)
         if (e.target._attrs.isOutPoint || e.target._attrs.isOutPointOut) {
+            console.log("切换到添加边模式")
             this.graph.setMode('addEdge')
         } else {
+            console.log("切换到移动节点模式")
             this.graph.setMode('moveNode')
         }
     },
