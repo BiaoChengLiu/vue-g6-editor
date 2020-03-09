@@ -1,6 +1,6 @@
-
 import eventBus from "@/utils/eventBus";
-import { uniqueId } from '@/utils'
+import {uniqueId} from '@/utils'
+
 let startPoint = null
 let startItem = null
 let endPoint = {}
@@ -39,7 +39,7 @@ export default {
             if (activeItem) {
                 const endX = parseInt(curInPoint._attrs.x)
                 const endY = parseInt(curInPoint._attrs.y)
-                endPoint = { x: endX, y: endY };
+                endPoint = {x: endX, y: endY};
                 if (this.edge) {
                     this.graph.removeItem(this.edge);
                     const model = {
@@ -108,7 +108,7 @@ export default {
             })
             const startX = parseInt(e.target._attrs.x)
             const startY = parseInt(e.target._attrs.y)
-            startPoint = { x: startX, y: startY };
+            startPoint = {x: startX, y: startY};
             startItem = item
             this.edge = this.graph.addItem('edge', {
                 source: item,
@@ -118,7 +118,7 @@ export default {
                 shape: 'link-edge'
             });
         } else {
-            const point = { x: e.x, y: e.y };
+            const point = {x: e.x, y: e.y};
             if (this.edge) {
                 // 增加边的过程中，移动时边跟着移动
                 this.graph.updateItem(this.edge, {

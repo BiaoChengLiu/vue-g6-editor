@@ -14,9 +14,9 @@ const behavors = {
     'drag-item': dragItem,
     'select-node': selectNode,
     'hover-edge': hoverEdge,
-    'keyboard':keyboard,
-    'mulit-select':mulitSelect,
-    'add-menu':addMenu
+    'keyboard': keyboard,
+    'mulit-select': mulitSelect,
+    'add-menu': addMenu
 }
 
 export function initBehavors() {

@@ -1,11 +1,11 @@
 import Util from '@antv/g6/src/util'
 import eventBus from "@/utils/eventBus";
-import { uniqueId,getBox } from '@/utils'
+import {uniqueId, getBox} from '@/utils'
 import config from '../global'
+
 export default {
     getDefaultCfg() {
-        return {
-        };
+        return {};
     },
     getEvents() {
         return {
@@ -54,7 +54,7 @@ export default {
         const selected = this.graph.findAllByState('node', 'selected');
         Util.each(selected, node => {
             this.graph.setItemState(node, 'selected', false);
-            eventBus.$emit('nodeselectchange', { target: node, select: false });
+            eventBus.$emit('nodeselectchange', {target: node, select: false});
         });
         if (this.shape) {
             this.addTeam()
@@ -66,10 +66,10 @@ export default {
         this.graph.setMode('default')
     },
     addTeam() {
-        const { x, y, width, height } = this.shape._attrs
-        const { x1, y1, x2, y2 } = getBox(x, y, width, height)
+        const {x, y, width, height} = this.shape._attrs
+        const {x1, y1, x2, y2} = getBox(x, y, width, height)
         this.graph.findAll('node', node => {
-            const { x: nodeX, y: nodeY, width: nodeWidth, height: nodeHeight } = node.getBBox()
+            const {x: nodeX, y: nodeY, width: nodeWidth, height: nodeHeight} = node.getBBox()
             const nodeBox = getBox(nodeX, nodeY, nodeWidth, nodeHeight)
             if ((x2 >= nodeBox.x1 && nodeBox.x1 >= x1) &&
                 (x2 >= nodeBox.x2 && nodeBox.x2 >= x1) &&

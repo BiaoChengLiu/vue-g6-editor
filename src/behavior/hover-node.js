@@ -21,13 +21,13 @@ export default {
                         group.find(gr => {
                             if (gr._attrs.id === g._attrs.id) {
                                 gr.attr('fill', "#1890ff")
-                                gr.attr('opacity',1)
+                                gr.attr('opacity', 1)
                             }
                         })
                     }
                     if (g._attrs.id === e.target._attrs.id) {
                         g.attr("fill", "#1890ff")
-                        g.attr('opacity',1)
+                        g.attr('opacity', 1)
                     }
 
                 }
@@ -55,15 +55,15 @@ export default {
             }
         });
         if (self.shouldUpdate.call(self, e)) {
-            if(!item.hasState('selected'))
-            graph.setItemState(item, 'hover', false);
+            if (!item.hasState('selected'))
+                graph.setItemState(item, 'hover', false);
         }
         graph.paint();
     },
     onMousedown(e) {
-        if(e.target._attrs.isOutPoint ||e.target._attrs.isOutPointOut){
+        if (e.target._attrs.isOutPoint || e.target._attrs.isOutPointOut) {
             this.graph.setMode('addEdge')
-        }else{
+        } else {
             this.graph.setMode('moveNode')
         }
     },
